@@ -307,25 +307,14 @@
                         .attr('y', d => d.polarY)
                         .text(d => d.name);
                         
-            // circularG.selectAll('.link')
-            //             .data(links)
-            //             .join('line')
-            //             .classed('link', true)
-            //             .attr('x1', d => d.source.polarX)
-            //             .attr('y1', d => d.source.polarY)
-            //             .attr('x2', d => d.target.polarX)
-            //             .attr('y2', d => d.target.polarY);
-
-            // Can also draw the links curved
-            let curve = d3.linkRadial()
-                            .angle(d => d.theta + Math.PI/2) // angle starts at 12 o'clock, so rotate 45 degrees
-                            .radius(radius);
-
             circularG.selectAll('.link')
-                    .data(links)
-                    .join('path')
-                    .classed('link', true)
-                    .attr('d', d => curve(d));
+                        .data(links)
+                        .join('line')
+                        .classed('link', true)
+                        .attr('x1', d => d.source.polarX)
+                        .attr('y1', d => d.source.polarY)
+                        .attr('x2', d => d.target.polarX)
+                        .attr('y2', d => d.target.polarY);
 
             circularG.selectAll('.link').lower();
             
