@@ -505,9 +505,17 @@
                                 // exit.call(exit => exit.transition())
                                 exit.selectAll('circle')
                                     .style('fill','lightpink')
-                                exit.call(exit => exit.transition()
-                                                      .attr('transform', (d,i) => `translate(${20 + i * 40},120)`)
-                                                      .remove());
+                                
+                                exit.call(exit => {
+                                                    exit.selectAll('circle')
+                                                    .transition()
+                                                    .duration(500)
+                                                    .style('opacity', 0);
+                                                    exit.transition()
+                                                    .delay(500)
+                                                    //   .attr('transform', (d,i) => `translate(${20 + i * 40},120)`)
+                                                      .remove();
+                                });
                             }
                         );
                 }
